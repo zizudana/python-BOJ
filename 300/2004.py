@@ -1,12 +1,13 @@
-def countNum(N, num): #N이 갖고있는 num의 개수
-  count = 0 
-  divNum = num 
-  while( N >= divNum): 
-    count = count + (N // divNum) 
-    divNum = divNum * num 
+def div_number(k, n): #k가 갖고있는 n의 개수
+    count = 0
+    while(k != 0):
+        k = k // n
+        count += k
     return count
 
-#다시풀기
-M, N = map(int, input().split()) 
-print(min(countNum(M, 5) - countNum(N, 5) - countNum(M-N, 5), countNum(M, 2) - countNum(N, 2) - countNum(M-N, 2)))
+n, m = list(map(int, input().split()))
 
+div_five = div_number(n, 5) - div_number(m, 5) - div_number(n-m, 5)
+div_two = div_number(n, 2) - div_number(m, 2) - div_number(n-m, 2)
+
+print(min(div_five, div_two))
